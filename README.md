@@ -24,8 +24,8 @@ Few Notes --
 - If you mess it up though you can just redownload the lua and just extract the SMN.lua file, Gear.lua typically won't need to be replaced.
 - The UI elements rely on packets functioning properly. When you start lagging some packets may start dropping. The Repair button is there incase something seems off (Macros not loading, hud doesn't swap).
 - If you log in as SMN in a zone you plan on playing SMN in (Like you DC in dynamis) you will need to hit the Repair button when everything loads. This is because the game doesn't read your merits until everything loads.
-The lua will automatically fix itself when you zone so you only need to worry about this if you log in and immeidately start doing SMN things. Even then the gearswap will just merit Bloodpacts will be grayed out (still usable) and will not
-calculate gear properly.
+The lua will automatically fix itself when you zone so you only need to worry about this if you log in and immeidately start doing SMN things. Even then the gearswap will just make  merit Bloodpacts grayed out (still usable) and will not
+calculate gear properly when using them (It will most likely default to your Enticers set)
 - If you have any major problems or suggestions on how to make this lua better feel free to contact me at Lavi#8710 on discord -- Also did you **READ THE COMMENTS**?
 
 Finally this lua wouldn't be possible without the hardwork and effort that Jyouya put into fine tuning the GUI library as well as greatly helping me sort out how to work some functions
