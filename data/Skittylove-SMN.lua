@@ -3,8 +3,8 @@
 -- Refresh: Uses the most refresh available.
 -- DT: A mix of refresh, PDT, and MDT to help when you can't avoid AOE.
 -- PetDT: Sacrifice refresh to reduce avatar's damage taken. WARNING: Selenian Cap drops you below 119, use with caution!
--- DD: When melee mode is on and you're engaged, uses TP gear. Otherwise, avatar melee gear.
 -- Favor: Uses Beckoner's Horn +1 and max smn skill to boost the favor effect.
+-- Pet Haste: Uses gear pet haste gear for faster TP
 
 
 -- Additional Bindings:
@@ -26,7 +26,6 @@
 -- Accuracy mode selector
 -- Idle mode selector. Can change to refresh focus, favor focus or avatar DD (Haste) focus
 -- Engaged mode selector - Choose what sets to use when engaged
-
 
 -- I highly recommend not putting anything important on your macro pallet in any areas you bind over. The default for this  lua is ALT 1-9. Either empty them or change them to /echo 'Something went wrong, repair the UI'
 
@@ -129,7 +128,7 @@ function setup()
 	Spabilities = S{'Odin', 'Alexander', 'Searing Light', 'Ruinous Omen', 'Howling Moon', 'Aerial Blast', 'Inferno', 'Tidal Wave', 'Judgment Bolt', 'Diamond Dust', 'Earthen Fury' }
 
 ------------------------------------------------------------
---Initializing values used to help determine favor variables
+--Initializing values used to help determine favor variables. Manually define these in your GEAR lua, not here as it won't do anything--
 	jobpointbonus = false
 	Currentskill = 417
 	RefreshSkill = 417
@@ -1623,8 +1622,10 @@ windower.raw_register_event('incoming chunk', function(id,original,modified,inje
         end
     end
 end )
---When Zoning it recalculates merits and JP bonusses
+--When Zoning it recalculates merits and JP bonuses
 windower.register_event('zone change', determinemerits)
+--Recalculates Merits when you login
+windower.register_event('login', determinemerits)
 -- Reload gearswap when you change subjobs to clean up UI elements
 function sub_job_change(new, old)
     windower.send_command('gs reload')

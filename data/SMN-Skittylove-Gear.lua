@@ -213,10 +213,9 @@ function build_gearsets()
 		legs="Enticer's Pants",
 	})
 
-	-- NoTP set used when you don't need Enticer's
+	-- NoTP set used when you don't need Enticer's 
 	sets.pet_midcast.Magic_BP.NoTP = set_combine(sets.pet_midcast.Magic_BP_Base, {
 		--legs={ name="Apogee Slacks +1", augments={'MP+80','Pet: "Mag.Atk.Bns."+35','Blood Pact Dmg.+8',}}
-		legs='Inyanga Shalwar +2'
 	})
 
 	sets.pet_midcast.Magic_BP.TP.Mid = set_combine(sets.pet_midcast.Magic_BP.TP, {
