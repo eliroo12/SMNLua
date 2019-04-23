@@ -42,9 +42,10 @@ Things this gearswap does:
 * During Astral Conduit this LUA will skip Bloodpact Midcast (BP CD gear) and will skip aftercast (What puts you in idle) after a bloodpact. This allows you mash away at your BP macro without impunity. Fastcast will still work and casting non BP spells will put you in your idle. No more gear locking!
 * Will equip and lock you into your Nirvana + Elan Strap at the click of button to make AM3 even more fun!
 * Supports a lag mode that adds a flat time to some functions and hopefully makes laggy instance for consistent. Only recommended if you think you are lagging pretty bad.
-* By default this lua is set to Automatically convert during Astral Conduit if you don't have enough Mana to cast the bloodpact you trying to cast. This can be toggled off with a convenient UI button or changed to Convert outside of Astral Conduit with a manually setting in the lua
+* By default this lua is set to Automatically convert during Astral Conduit if you don't have enough Mana to cast the bloodpact you trying to cast. This can be toggled off with a convenient UI button or changed to Convert outside of Astral Conduit with a manual setting in the lua
 * Supports Accuracy modes for your Avatar and Melee modes for the user
 * Use a different set if you are under AM3
 * Will determine the best element to siphon from and full perform that function and resummon your old pet if you had one.
 * Accurately displays help text for Bloodpacts that change value based on Time / Date
 * Automatically applies Avatar's Favor (This can be turned off with a simple true/false)
+* Typing 'gs c lowhp' in the console will help you quickly square away the 500 Health hP objective in omen (Assuming you set the sets)
