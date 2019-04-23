@@ -92,7 +92,7 @@ function setup()
 	Ypos= 150
 -----------------------------------------------------------------------------------------------------------------------------
 	siphondelay = 7 --Enter how long you want the siphon process to take here. I highly recommend 8 seconds. Lagmode will add an additional 2 seconds to this
-	BindMacros = false -- Change to false if you don't want to bind macros. Recommended if you want to use your own ingame macros
+	BindMacros = true -- Change to false if you don't want to bind macros. Recommended if you want to use your own ingame macros
 	NoHud = false -- Change to true if you want no hud display. 
 	Autofavor = true -- Change to false if you don't want the lua to automatically apply Avatar's Favor when applicable
 	AutoRemedy = true -- Auto Remedy when using an ability while Paralyzed. Checks Inventory
