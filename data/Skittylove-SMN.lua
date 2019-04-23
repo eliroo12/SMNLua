@@ -88,7 +88,7 @@ end
 function setup()
 
 --Controls starting position of UI elements. All buttons offset from these two. Can be change with the command gs c pos x y
-	Xpos= 1340
+	Xpos= 1320
 	Ypos= 150
 -----------------------------------------------------------------------------------------------------------------------------
 	siphondelay = 7 --Enter how long you want the siphon process to take here. I highly recommend 8 seconds. Lagmode will add an additional 2 seconds to this
@@ -97,10 +97,10 @@ function setup()
 	Autofavor = true -- Change to false if you don't want the lua to automatically apply Avatar's Favor when applicable
 	AutoRemedy = true -- Auto Remedy when using an ability while Paralyzed. Checks Inventory
 	AutoEcho = true-- Auto Echo Drop when using an ability while Silenced. Checks Inventory
-	Convertall = false -- If this is set to true the Autoconvert function will work on any bloodpact regardless if you are under Astral Conduit or not
+	Convertall = true -- If this is set to true the Autoconvert function will work on any bloodpact regardless if you are under Astral Conduit or not
 	AccMode = false 
 	MeleeMode = false --Determines if you are locked into Nirvana or not.
-	
+    set_macro_page(10, 10)
 -----------------------------------------------------------------------------------------------------------
 --------------------------------End User Entry Section-----------------------------------------------------
 -----------------------------------------------------------------------------------------------------------
@@ -271,153 +271,153 @@ function define_macrosets()
 	colorofmana determines text color based on conditions. spcolor for SP abilitys, meritbpcolor for merit abilitys, manacolor for entries with mana listed
 	]]
 	macros['None'] = {
-		{hide=true, bloodpact= '',name = '', number = macroassign..'`', numbertext = 'Keybind', target = me, text = '', Mana = 'Mana'},
-		{hide=true, bloodpact= 'Summon',name = 'Carbuncle', number = carbuncleBind, numbertext = carbuncleText, target = me, Mana = 5, colorofmana = manacolor},
-		{hide=true, bloodpact= 'Summon',name = 'Fenrir', number = fenrirBind, numbertext = fenrirText, target = me, Mana = 15, colorofmana = manacolor},
-		{hide=true, bloodpact= 'Summon',name = 'Ifrit', number = ifritBind, numbertext = ifritText, target = me, Mana = 7, colorofmana = manacolor},
-		{hide=true, bloodpact= 'Summon',name = 'Titan', number = titanBind, numbertext = titanText, target = me, Mana = 7, colorofmana = manacolor},
-		{hide=true, bloodpact= 'Summon',name = 'Leviathan', number = leviathanBind, numbertext = leviathanText, target = me, Mana = 7, colorofmana = manacolor},
-		{hide=true, bloodpact= 'Summon',name = 'Garuda', number = garudaBind, numbertext = garudaText, target = me, Mana = 7, colorofmana = manacolor},
-		{hide=true, bloodpact= 'Summon',name = 'Shiva', number = shivaBind, numbertext = shivaText, target = me, Mana = 7, colorofmana = manacolor},
-		{hide=true, bloodpact= 'Summon',name = 'Ramuh', number = ramuhBind, numbertext = ramuhText, target = me,  Mana = 7, colorofmana = manacolor},
-		{hide=true, bloodpact= 'Summon',name = 'Diabolos', number = diabolosBind, numbertext = diabolosText, target = me,  Mana = 15, colorofmana = manacolor},
-		{hide=true, bloodpact= 'Summon',name = 'Cait Sith', number = caitsithBind, numbertext = caitsithText, target = me, Mana = 5, colorofmana = manacolor},
-		{hide=true, bloodpact= 'Summon',name = 'Atomos', number = atomosBind, numbertext = atomosText, target = targ, text = 'Dispel / Buff', Mana = 50, colorofmana = manacolor},
-		{hide=true, bloodpact= 'Summon',name = 'Alexander', number = alexanderBind, numbertext = alexanderText, target = me, text = 'Requires Astral Flow -- High DT and Status Immunity', Mana = 'All', colorofmana = spcolor},
-		{hide=true, bloodpact= 'Summon',name = 'Odin', number = odinBind, numbertext = odinText, target = me, text = ' Requires Astral Flow -- Chance to Instantly Kill ', Mana = 'All', colorofmana = spcolor},
+		{hide=true, bloodpact= '',name = '', number = macroassign..'`', numbertext = 'Keybind', target = me, text = '', Mana = 'Mana', finalmana = 'Mana'},
+		{hide=true, bloodpact= 'Summon',name = 'Carbuncle', number = carbuncleBind, numbertext = carbuncleText, target = me, Mana = 5, colorofmana = manacolor, finalmana = 5},
+		{hide=true, bloodpact= 'Summon',name = 'Fenrir', number = fenrirBind, numbertext = fenrirText, target = me, Mana = 15, colorofmana = manacolor, finalmana = 15},
+		{hide=true, bloodpact= 'Summon',name = 'Ifrit', number = ifritBind, numbertext = ifritText, target = me, Mana = 7, colorofmana = manacolor, finalmana = 7},
+		{hide=true, bloodpact= 'Summon',name = 'Titan', number = titanBind, numbertext = titanText, target = me, Mana = 7, colorofmana = manacolor, finalmana = 7},
+		{hide=true, bloodpact= 'Summon',name = 'Leviathan', number = leviathanBind, numbertext = leviathanText, target = me, Mana = 7, colorofmana = manacolor, finalmana = 7},
+		{hide=true, bloodpact= 'Summon',name = 'Garuda', number = garudaBind, numbertext = garudaText, target = me, Mana = 7, colorofmana = manacolor, finalmana = 7},
+		{hide=true, bloodpact= 'Summon',name = 'Shiva', number = shivaBind, numbertext = shivaText, target = me, Mana = 7, colorofmana = manacolor, finalmana = 7},
+		{hide=true, bloodpact= 'Summon',name = 'Ramuh', number = ramuhBind, numbertext = ramuhText, target = me,  Mana = 7, colorofmana = manacolor, finalmana = 7},
+		{hide=true, bloodpact= 'Summon',name = 'Diabolos', number = diabolosBind, numbertext = diabolosText, target = me,  Mana = 15, colorofmana = manacolor, finalmana = 15},
+		{hide=true, bloodpact= 'Summon',name = 'Cait Sith', number = caitsithBind, numbertext = caitsithText, target = me, Mana = 5, colorofmana = manacolor, finalmana = 15},
+		{hide=true, bloodpact= 'Summon',name = 'Atomos', number = atomosBind, numbertext = atomosText, target = targ, text = 'Dispel / Buff', Mana = 50, colorofmana = manacolor, finalmana = 50},
+		{hide=true, bloodpact= 'Summon',name = 'Alexander', number = alexanderBind, numbertext = alexanderText, target = me, text = 'Requires Astral Flow -- High DT and Status Immunity', Mana = 'All', colorofmana = spcolor, finalmana = 'All'},
+		{hide=true, bloodpact= 'Summon',name = 'Odin', number = odinBind, numbertext = odinText, target = me, text = ' Requires Astral Flow -- Chance to Instantly Kill ', Mana = 'All', colorofmana = spcolo, finalmana = 'All'},
 
 }
 	macros['Cait Sith'] = {
-		{hide=true, bloodpact= 'Bloodpact',name = 'Ability', number = macroassign..'`', numbertext = 'Keybind', target = me, text = 'Help Text', Mana = 'Mana Cost', colorofmana =''},
-		{bloodpact= 'Rage',name = 'Regal Scratch', number = macroassign1, numbertext = macrotext1, target = targ, Mana = 5, colorofmana = manacolor},
-		{bloodpact= 'Rage',name = 'Regal Gash', number = macroassign2, numbertext = macrotext2, target = targ, Mana = 118, colorofmana = manacolor},
-		{bloodpact= 'Rage',name = 'Level ? Holy', number = macroassign3, numbertext = macrotext3, target = targ, Mana = 235, text = 'Deals damage randomly', colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Mewing Lullaby', number = macroassign4, numbertext = macrotext4, target = targ, text = 'AoE Sleep and TP reset', Mana = 61, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Eerie Eye', number = macroassign5, numbertext = macrotext5, target = targ, text = 'Conal Silence and Amnesia', Mana = 134, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Raise II', number = macroassign6, numbertext = macrotext6, target = targ, Mana = 160, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Reraise II', number = macroassign7, numbertext = macrotext7, target = targ, Mana = 80, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Reraise II', number = macroassign8, numbertext = macrotext8, target = me, text = 'Targets Self', Mana = 80, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Altana\'s Favor', number = macroassign9, numbertext = macrotext9, target = me, text = 'SP Ability: AoE Arise and Reraise III', Mana = 198, colorofmana = spcolor}
+		{hide=true, bloodpact= 'Bloodpact',name = 'Ability', number = macroassign..'`', numbertext = 'Keybind', target = me, text = 'Help Text', Mana = 'Mana Cost', colorofmana ='', finalmana = 'Mana Cost'},
+		{bloodpact= 'Rage',name = 'Regal Scratch', number = macroassign1, numbertext = macrotext1, target = targ, Mana = 5, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Regal Gash', number = macroassign2, numbertext = macrotext2, target = targ, Mana = 118, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Level ? Holy', number = macroassign3, numbertext = macrotext3, target = targ, Mana = 235, text = 'Deals damage randomly', colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Mewing Lullaby', number = macroassign4, numbertext = macrotext4, target = targ, text = 'AoE Sleep and TP reset', Mana = 61, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Eerie Eye', number = macroassign5, numbertext = macrotext5, target = targ, text = 'Conal Silence and Amnesia', Mana = 134, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Raise II', number = macroassign6, numbertext = macrotext6, target = targ, Mana = 160, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Reraise II', number = macroassign7, numbertext = macrotext7, target = targ, Mana = 80, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Reraise II', number = macroassign8, numbertext = macrotext8, target = me, text = 'Targets Self', Mana = 80, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Altana\'s Favor', number = macroassign9, numbertext = macrotext9, target = me, text = 'SP Ability: AoE Arise and Reraise III', Mana = 198, colorofmana = spcolor, finalmana = 198}
 
 }
 	macros['Carbuncle'] = {
-		{hide=true, bloodpact= 'Bloodpact',name = 'Ability', number = macroassign..'`', numbertext = 'Keybind', target = me, text = 'Help Text', Mana = 'Mana Cost'},
-		{bloodpact= 'Rage', name = 'Meteorite', number = macroassign1, numbertext = macrotext1, target = targ, Mana = 108, colorofmana = manacolor},
-		{bloodpact= 'Rage', name = 'Holy Mist', number = macroassign2, numbertext = macrotext2, target = targ, Mana = 152, colorofmana = manacolor},
-		{bloodpact= 'Ward', name = 'Healing Ruby', number = macroassign3, numbertext = macrotext3, target = targ, text='Single Target', Mana = 6, colorofmana = manacolor},
-		{bloodpact= 'Ward', name = 'Healing Ruby II', number = macroassign4, numbertext = macrotext4, target = me, text='AoE', Mana = 124, colorofmana = manacolor},
-		{bloodpact= 'Ward', name = 'Pacifying Ruby', number = macroassign5,numbertext = macrotext5, target = targ, text='Decreases Enmity by 25%',  Mana = 83, colorofmana = manacolor},
-		{bloodpact= 'Ward', name = 'Shining Ruby', number = macroassign6, numbertext = macrotext6, target = me, text= 'Protect||Shell', Mana = 44, colorofmana = manacolor},
-		{bloodpact= 'Ward', name = 'Glittering Ruby', number = macroassign7,  numbertext = macrotext7, target = me, text= 'Random Attributes', Mana = 62, colorofmana = manacolor},
-		{bloodpact= 'Ward', name = 'Soothing Ruby', number = macroassign8, numbertext = macrotext8, target = me, text = 'AoE Esuna', Mana = 74, colorofmana = manacolor},
-		{bloodpact= 'Rage', name = 'Searing Light', number = macroassign9, numbertext = macrotext9, target = targ,  text = 'SP Ability', Mana = 198, colorofmana = spcolor}
+		{hide=true, bloodpact= 'Bloodpact',name = 'Ability', number = macroassign..'`', numbertext = 'Keybind', target = me, text = 'Help Text', Mana = 'Mana Cost', finalmana = 'Mana Cost'},
+		{bloodpact= 'Rage', name = 'Meteorite', number = macroassign1, numbertext = macrotext1, target = targ, Mana = 108, colorofmana = manacolor, finalmana = manavalue, finalmana = manavalue},
+		{bloodpact= 'Rage', name = 'Holy Mist', number = macroassign2, numbertext = macrotext2, target = targ, Mana = 152, colorofmana = manacolor, finalmana = manavalue, finalmana = manavalue},
+		{bloodpact= 'Ward', name = 'Healing Ruby', number = macroassign3, numbertext = macrotext3, target = targ, text='Single Target', Mana = 6, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward', name = 'Healing Ruby II', number = macroassign4, numbertext = macrotext4, target = me, text='AoE', Mana = 124, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward', name = 'Pacifying Ruby', number = macroassign5,numbertext = macrotext5, target = targ, text='Decreases Enmity by 25%',  Mana = 83, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward', name = 'Shining Ruby', number = macroassign6, numbertext = macrotext6, target = me, text= 'Protect||Shell', Mana = 44, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward', name = 'Glittering Ruby', number = macroassign7,  numbertext = macrotext7, target = me, text= 'Random Attributes', Mana = 62, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward', name = 'Soothing Ruby', number = macroassign8, numbertext = macrotext8, target = me, text = 'AoE Esuna', Mana = 74, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage', name = 'Searing Light', number = macroassign9, numbertext = macrotext9, target = targ,  text = 'SP Ability', Mana = 198, colorofmana = spcolor, finalmana = 198}
 
 }
 	macros['Fenrir'] = {
-		{hide=true, bloodpact= 'Bloodpact',name = 'Ability', number = macroassign1, numbertext = 'Keybind', target = me, text = 'Help Text', Mana = 'Mana Cost'},
-		{bloodpact= 'Rage', name = 'Impact', number = macroassign1, numbertext = macrotext1, target = targ,  text= 'Multiple Attribute down', Mana = 222, colorofmana = manacolor},
-		{bloodpact= 'Rage', name = 'Moonlit Charge', number = macroassign2, numbertext = macrotext2, target = targ, text='Blind', Mana =  17, colorofmana = manacolor},
-		{bloodpact= 'Rage', name = 'Eclipse Bite', number = macroassign3, numbertext = macrotext3, target = targ, Mana = 109, colorofmana = manacolor},
-		{bloodpact= 'Ward', name = 'Lunar Cry', number = macroassign4, numbertext = macrotext4, target = targ, text=function() return avatar_phases('Lunar Cry') end, Mana = 41, colorofmana = manacolor},
-		{bloodpact= 'Ward', name = 'Lunar Roar', number = macroassign5, numbertext = macrotext5, target = targ, text='AoE Dispel II', Mana = 27, colorofmana = manacolor},
-		{bloodpact= 'Ward', name = 'Ecliptic Growl', number = macroassign6, numbertext = macrotext6, target = me, text= function() return avatar_phases('Ecliptic Growl') end, Mana = 46, colorofmana = manacolor},
-		{bloodpact= 'Ward', name = 'Ecliptic Howl', number = macroassign7, numbertext = macrotext7, target = me, text= function() return avatar_phases('Ecliptic Howl') end, Mana = 57, colorofmana = manacolor},
-		{bloodpact= 'Ward', name = 'Heavenward Howl', number = macroassign8, numbertext = macrotext8, target = me, text= function() return avatar_phases('Heavenward Howl') end, Mana = 96, colorofmana = manacolor},
-		{bloodpact= 'Rage', name = 'Howling Moon', number = macroassign9, numbertext = macrotext9, target = targ, text = 'SP Ability', Mana = 198, colorofmana = spcolor}
+		{hide=true, bloodpact= 'Bloodpact',name = 'Ability', number = macroassign1, numbertext = 'Keybind', target = me, text = 'Help Text', Mana = 'Mana Cost', finalmana = 'Mana Cost'},
+		{bloodpact= 'Rage', name = 'Impact', number = macroassign1, numbertext = macrotext1, target = targ,  text= 'Multiple Attribute down', Mana = 222, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage', name = 'Moonlit Charge', number = macroassign2, numbertext = macrotext2, target = targ, text='Blind', Mana =  17, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage', name = 'Eclipse Bite', number = macroassign3, numbertext = macrotext3, target = targ, Mana = 109, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward', name = 'Lunar Cry', number = macroassign4, numbertext = macrotext4, target = targ, text=function() return avatar_phases('Lunar Cry') end, Mana = 41, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward', name = 'Lunar Roar', number = macroassign5, numbertext = macrotext5, target = targ, text='AoE Dispel II', Mana = 27, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward', name = 'Ecliptic Growl', number = macroassign6, numbertext = macrotext6, target = me, text= function() return avatar_phases('Ecliptic Growl') end, Mana = 46, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward', name = 'Ecliptic Howl', number = macroassign7, numbertext = macrotext7, target = me, text= function() return avatar_phases('Ecliptic Howl') end, Mana = 57, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward', name = 'Heavenward Howl', number = macroassign8, numbertext = macrotext8, target = me, text= function() return avatar_phases('Heavenward Howl') end, Mana = 96, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage', name = 'Howling Moon', number = macroassign9, numbertext = macrotext9, target = targ, text = 'SP Ability', Mana = 198, colorofmana = spcolor, finalmana = 198}
 
 }
 	macros['Ifrit'] = {
-		{hide=true, bloodpact= 'Bloodpact',name = 'Ability', number = macroassign1, numbertext = 'Keybind', target = me, text = 'Help Text', Mana = 'Mana Cost'},
-		{bloodpact= 'Rage',name = 'Fire IV', number = macroassign1, numbertext = macrotext1, target = targ, Mana = 118, colorofmana = manacolor},
-		{bloodpact= 'Rage',name = 'Conflag Strike', number = macroassign2, numbertext = macrotext2, target = targ, text=' Int -63', Mana = 141, colorofmana = manacolor},
-		{bloodpact= 'Rage',name = 'Meteor Strike', number = macroassign3, numbertext = macrotext3, target = targ,text = merits['Meteor Strike'] > 0 and ((merits['Meteor Strike']-1)*400)..' TP Bonus' or 'Not Merited', Mana = 182, colorofmana = meritbpcolor},
-		{bloodpact= 'Rage',name = 'Flaming Crush', number = macroassign4, numbertext = macrotext4, target = targ, Mana = 164, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Crimson Howl', number = macroassign5, numbertext = macrotext5, target = me, text='11% Attack Boost', Mana = 84, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Inferno Howl', number = macroassign6,  numbertext = macrotext6, target = me, text= 'Enfire', Mana = 72, colorofmana = manacolor},
-		{bloodpact= '',name = '', number = macroassign7, numbertext = macrotext7, target = targ, hide=true, colorofmana = manacolor},
-		{bloodpact= '',name = '', number = macroassign8, numbertext = macrotext8, target = me, text = '', hide=true, colorofmana = manacolor},
-		{bloodpact= 'Rage',name = 'Inferno', number = macroassign9, numbertext = macrotext9, target = targ, text = 'SP Ability', Mana = 198, colorofmana = spcolor}
+		{hide=true, bloodpact= 'Bloodpact',name = 'Ability', number = macroassign1, numbertext = 'Keybind', target = me, text = 'Help Text', Mana = 'Mana Cost', finalmana = 'Mana Cost'},
+		{bloodpact= 'Rage',name = 'Fire IV', number = macroassign1, numbertext = macrotext1, target = targ, Mana = 118, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Conflag Strike', number = macroassign2, numbertext = macrotext2, target = targ, text=' Int -63', Mana = 141, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Meteor Strike', number = macroassign3, numbertext = macrotext3, target = targ,text = merits['Meteor Strike'] > 0 and ((merits['Meteor Strike']-1)*400)..' TP Bonus' or 'Not Merited', Mana = 182, colorofmana = meritbpcolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Flaming Crush', number = macroassign4, numbertext = macrotext4, target = targ, Mana = 164, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Crimson Howl', number = macroassign5, numbertext = macrotext5, target = me, text='11% Attack Boost', Mana = 84, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Inferno Howl', number = macroassign6,  numbertext = macrotext6, target = me, text= 'Enfire', Mana = 72, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= '',name = '', number = macroassign7, numbertext = macrotext7, target = targ, hide=true, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= '',name = '', number = macroassign8, numbertext = macrotext8, target = me, text = '', hide=true, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Inferno', number = macroassign9, numbertext = macrotext9, target = targ, text = 'SP Ability', Mana = 198, colorofmana = spcolor, finalmana = 198}
 
 }
 	macros['Titan'] = {
-		{hide=true, bloodpact= 'Bloodpact',name = 'Ability', number = macroassign..'`', numbertext = 'Keybind', target = me, text = 'Help Text', Mana = 'Mana Cost'},
-		{bloodpact= 'Rage',name = 'Stone IV', number = macroassign..'1', numbertext = macrotext1, target = targ, Mana = 118, colorofmana = manacolor},
-		{bloodpact= 'Rage',name = 'Crag Throw', number = macroassign2, numbertext = macrotext2, target = targ, text='30% Slow', Mana = 124, colorofmana = manacolor},
-		{bloodpact= 'Rage',name = 'Geocrush', number = macroassign3, numbertext = macrotext3, target = targ,text = merits['Geocrush'] > 0 and ((merits['Geocrush']-1)*400)..' TP Bonus' or 'Not Merited', Mana = 182, colorofmana = meritbpcolor},
-		{bloodpact= 'Rage',name = 'Mountain Buster', number = macroassign4, numbertext = macrotext4, target = targ, Mana = 164, colorofmana = manacolor},
-		{bloodpact= 'Rage',name = 'Rock Buster', number = macroassign5, numbertext = macrotext5, target = targ, text='Bind', Mana = 39, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Earthen Ward', number = macroassign6, numbertext = macrotext6, target = me, text= 'Stoneskin', Mana = 92, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Earthen Armor', number = macroassign7, numbertext = macrotext7, target = me, text='Reduces Massive Damage by 45%', Mana = 156, colorofmana = manacolor},
-		{bloodpact= '',name = '', number = macroassign8, numbertext = macrotext8, target = me, text = '', hide=true, colorofmana = manacolor},
-		{bloodpact= 'Rage',name = 'Earthen Fury', number = macroassign9, numbertext = macrotext9, target = targ, text = 'SP Ability', Mana = 198, colorofmana = spcolor}
+		{hide=true, bloodpact= 'Bloodpact',name = 'Ability', number = macroassign..'`', numbertext = 'Keybind', target = me, text = 'Help Text', Mana = 'Mana Cost', finalmana = 'Mana Cost'},
+		{bloodpact= 'Rage',name = 'Stone IV', number = macroassign..'1', numbertext = macrotext1, target = targ, Mana = 118, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Crag Throw', number = macroassign2, numbertext = macrotext2, target = targ, text='30% Slow', Mana = 124, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Geocrush', number = macroassign3, numbertext = macrotext3, target = targ,text = merits['Geocrush'] > 0 and ((merits['Geocrush']-1)*400)..' TP Bonus' or 'Not Merited', Mana = 182, colorofmana = meritbpcolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Mountain Buster', number = macroassign4, numbertext = macrotext4, target = targ, Mana = 164, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Rock Buster', number = macroassign5, numbertext = macrotext5, target = targ, text='Bind', Mana = 39, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Earthen Ward', number = macroassign6, numbertext = macrotext6, target = me, text= 'Stoneskin', Mana = 92, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Earthen Armor', number = macroassign7, numbertext = macrotext7, target = me, text='Reduces Massive Damage by 45%', Mana = 156, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= '',name = '', number = macroassign8, numbertext = macrotext8, target = me, text = '', hide=true, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Earthen Fury', number = macroassign9, numbertext = macrotext9, target = targ, text = 'SP Ability', Mana = 198, colorofmana = spcolor, finalmana = manavalue}
 	
 }
 	macros['Leviathan'] = {
-		{hide=true, bloodpact= 'Bloodpact',name = 'Ability', number = macroassign..'`', numbertext = 'Keybind', target = me, text = 'Help Text', Mana = 'Mana Cost'},
-		{bloodpact= 'Rage',name = 'Water IV', number = macroassign1, numbertext = macrotext1, target = targ, Mana = 118, colorofmana = manacolor},
-		{bloodpact= 'Rage',name = 'Water II', number = macroassign2, numbertext = macrotext2, target = targ, Mana = 24, colorofmana = manacolor},
-		{bloodpact= 'Rage',name = 'Grand Fall', number = macroassign3, numbertext = macrotext3, target = targ,text = merits['Grand Fall'] > 0 and ((merits['Grand Fall']-1)*400)..' TP Bonus' or 'Not Merited', Mana = 182, colorofmana = meritbpcolor},
-		{bloodpact= 'Rage',name = 'Spinning Dive', number = macroassign4, numbertext = macrotext4, target = targ, Mana = 164, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Spring Water', number = macroassign5, numbertext = macrotext5, target = me, text='AoE Heal', Mana = 99, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Soothing Current', number = macroassign6, numbertext = macrotext6, target = me, text= '+15% Cure Potency Received', Mana = 95, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Tidal Roar', number = macroassign7, numbertext = macrotext7, target = targ, text='-25% Attack', Mana = 138, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Slowga', number = macroassign8, numbertext = macrotext8, target = targ, text = '30% AoE Slow', Mana = 48, colorofmana = manacolor},
-		{bloodpact= 'Rage',name = 'Tidal Wave', number = macroassign9, numbertext = macrotext9, target = targ, text = 'SP Ability', Mana = 198, colorofmana = spcolor}
+		{hide=true, bloodpact= 'Bloodpact',name = 'Ability', number = macroassign..'`', numbertext = 'Keybind', target = me, text = 'Help Text', Mana = 'Mana Cost', finalmana = 'Mana Cost'},
+		{bloodpact= 'Rage',name = 'Water IV', number = macroassign1, numbertext = macrotext1, target = targ, Mana = 118, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Water II', number = macroassign2, numbertext = macrotext2, target = targ, Mana = 24, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Grand Fall', number = macroassign3, numbertext = macrotext3, target = targ,text = merits['Grand Fall'] > 0 and ((merits['Grand Fall']-1)*400)..' TP Bonus' or 'Not Merited', Mana = 182, colorofmana = meritbpcolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Spinning Dive', number = macroassign4, numbertext = macrotext4, target = targ, Mana = 164, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Spring Water', number = macroassign5, numbertext = macrotext5, target = me, text='AoE Heal', Mana = 99, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Soothing Current', number = macroassign6, numbertext = macrotext6, target = me, text= '+15% Cure Potency Received', Mana = 95, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Tidal Roar', number = macroassign7, numbertext = macrotext7, target = targ, text='-25% Attack', Mana = 138, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Slowga', number = macroassign8, numbertext = macrotext8, target = targ, text = '30% AoE Slow', Mana = 48, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Tidal Wave', number = macroassign9, numbertext = macrotext9, target = targ, text = 'SP Ability', Mana = 198, colorofmana = spcolor, finalmana = 198}
 
 }
 	macros['Garuda'] = {
-		{hide=true, bloodpact= 'Bloodpact',name = 'Ability', number = macroassign..'`', numbertext = 'Keybind', target = me, text = 'Help Text', Mana = 'Mana Cost'},
-		{bloodpact= 'Rage',name = 'Aero IV', number = macroassign1, numbertext = macrotext1, target = targ, Mana = 118, colorofmana = manacolor},
-		{bloodpact= 'Rage',name = 'Aero II', number = macroassign2, numbertext = macrotext2, target = targ, Mana = 24, colorofmana = manacolor},
-		{bloodpact= 'Rage',name = 'Wind Blade', number = macroassign3, numbertext = macrotext3, target = targ, text = merits['Wind Blade'] > 0 and ((merits['Wind Blade']-1)*400)..' TP Bonus' or 'Not Merited', Mana = 182, colorofmana = meritbpcolor},
-		{bloodpact= 'Rage',name = 'Predator Claws', number = macroassign4, numbertext = macrotext4, target = targ, Mana = 164, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Whispering Wind', number = macroassign5, numbertext = macrotext5, target = me, text='AoE Heal', Mana = 119, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Hastega II', number = macroassign6, numbertext = macrotext6, target = me, text= '30% Haste', Mana = 248, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Aerial Armor', number = macroassign7, numbertext = macrotext7, target = me, text='Blink', Mana = 92, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Fleet Wind', number = macroassign8, numbertext = macrotext8, target = me, text = '20% Movement Speed', Mana = 114, colorofmana = manacolor},
-		{bloodpact= 'Rage',name = 'Aerial Blast', number = macroassign9, numbertext = macrotext9, target = targ, text = 'SP Ability', Mana = 198, colorofmana = spcolor}
+		{hide=true, bloodpact= 'Bloodpact',name = 'Ability', number = macroassign..'`', numbertext = 'Keybind', target = me, text = 'Help Text', Mana = 'Mana Cost', finalmana = 'Mana Cost'},
+		{bloodpact= 'Rage',name = 'Aero IV', number = macroassign1, numbertext = macrotext1, target = targ, Mana = 118, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Aero II', number = macroassign2, numbertext = macrotext2, target = targ, Mana = 24, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Wind Blade', number = macroassign3, numbertext = macrotext3, target = targ, text = merits['Wind Blade'] > 0 and ((merits['Wind Blade']-1)*400)..' TP Bonus' or 'Not Merited', Mana = 182, colorofmana = meritbpcolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Predator Claws', number = macroassign4, numbertext = macrotext4, target = targ, Mana = 164, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Whispering Wind', number = macroassign5, numbertext = macrotext5, target = me, text='AoE Heal', Mana = 119, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Hastega II', number = macroassign6, numbertext = macrotext6, target = me, text= '30% Haste', Mana = 248, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Aerial Armor', number = macroassign7, numbertext = macrotext7, target = me, text='Blink', Mana = 92, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Fleet Wind', number = macroassign8, numbertext = macrotext8, target = me, text = '20% Movement Speed', Mana = 114, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Aerial Blast', number = macroassign9, numbertext = macrotext9, target = targ, text = 'SP Ability', Mana = 198, colorofmana = spcolor, finalmana = 198}
 
 }
 	macros['Shiva'] = {
-		{hide=true, bloodpact= 'Bloodpact',name = 'Ability', number = macroassign..'`', numbertext = 'Keybind', target = me, text = 'Help Text', Mana = 'Mana Cost'},
-		{bloodpact= 'Rage',name = 'Blizzard IV', number = macroassign1, numbertext = macrotext1, target = targ, Mana = 118, colorofmana = manacolor},
-		{bloodpact= 'Rage',name = 'Blizzard II', number = macroassign2, numbertext = macrotext2, target = targ, Mana = 24, colorofmana = manacolor},
-		{bloodpact= 'Rage',name = 'Heavenly Strike', number = macroassign3, numbertext = macrotext3, target = targ, text = merits['Heavenly Strike'] > 0 and ((merits['Heavenly Strike']-1)*400)..' TP Bonus' or 'Not Merited', Mana = 182, colorofmana = meritbpcolor},
-		{bloodpact= 'Rage',name = 'Rush', number = macroassign4, numbertext = macrotext4, target = targ, Mana = 164, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Crystal Blessing', number = macroassign5, numbertext = macrotext5, target = me, text='250 TP Bonus Buff', Mana = 201, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Frost Armor', number = macroassign6, numbertext = macrotext6, target = me, text= 'Ice Spikes', Mana = 63, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Diamond Storm', number = macroassign7, numbertext = macrotext7, target = targ, text='-25 Evasion', Mana = 138, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Sleepga', number = macroassign8, numbertext = macrotext8, target = targ, text='AoE Sleep', colorofmana = manacolor},
-		{bloodpact= 'Rage',name = 'Diamond Dust', number = macroassign9, numbertext = macrotext9, target = targ, text = 'SP Ability', Mana = 198, colorofmana = spcolor}
+		{hide=true, bloodpact= 'Bloodpact',name = 'Ability', number = macroassign..'`', numbertext = 'Keybind', target = me, text = 'Help Text', Mana = 'Mana Cost', finalmana = 'Mana Cost'},
+		{bloodpact= 'Rage',name = 'Blizzard IV', number = macroassign1, numbertext = macrotext1, target = targ, Mana = 118, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Blizzard II', number = macroassign2, numbertext = macrotext2, target = targ, Mana = 24, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Heavenly Strike', number = macroassign3, numbertext = macrotext3, target = targ, text = merits['Heavenly Strike'] > 0 and ((merits['Heavenly Strike']-1)*400)..' TP Bonus' or 'Not Merited', Mana = 182, colorofmana = meritbpcolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Rush', number = macroassign4, numbertext = macrotext4, target = targ, Mana = 164, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Crystal Blessing', number = macroassign5, numbertext = macrotext5, target = me, text='250 TP Bonus Buff', Mana = 201, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Frost Armor', number = macroassign6, numbertext = macrotext6, target = me, text= 'Ice Spikes', Mana = 63, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Diamond Storm', number = macroassign7, numbertext = macrotext7, target = targ, text='-25 Evasion', Mana = 138, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Sleepga', number = macroassign8, numbertext = macrotext8, target = targ, text='AoE Sleep', Mana = 54, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Diamond Dust', number = macroassign9, numbertext = macrotext9, target = targ, text = 'SP Ability', Mana = 198, colorofmana = spcolor, finalmana = 198}
 
 }
 	macros['Ramuh'] = {
-		{hide=true, bloodpact= 'Bloodpact',name = 'Ability', number = macroassign..'`', numbertext = 'Keybind', target = me, text = 'Help Text', Mana = 'Mana Cost'},
-		{bloodpact= 'Rage',name = 'Thunder IV', number = macroassign1, numbertext = macrotext1, target = targ, Mana = 118, colorofmana = manacolor},
-		{bloodpact= 'Rage',name = 'Thunderspark', number = macroassign2, numbertext = macrotext2, target = targ, text='AoE Paralyze', Mana = 38, colorofmana = manacolor},
-		{bloodpact= 'Rage',name = 'Thunderstorm', number = macroassign3, numbertext = macrotext3, target = targ, text = merits['Thunderstorm'] > 0 and ((merits['Thunderstorm']-1)*400)..' TP Bonus' or 'Not Merited', colorofmana = meritbpcolor},
-		{bloodpact= 'Rage',name = 'Volt Strike', number = macroassign4, numbertext = macrotext4, target = targ, Mana = 229, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Shock Squall', number = macroassign5, numbertext = macrotext5, target = targ, text='AoE Stun', Mana = 67, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Lightning Armor', number = macroassign6, numbertext = macrotext6, target = me, text= 'Shock Spikes', Mana = 91, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Rolling Thunder', number = macroassign7, numbertext = macrotext7, target = me, text='Enthunder', Mana = 52, colorofmana = manacolor},
-		{bloodpact= '',name = '', number = macroassign8, numbertext = macrotext8, target = me, text = '', hide=true, colorofmana = manacolor},
-		{bloodpact= 'Rage',name = 'Judgment Bolt', number = macroassign9, numbertext = macrotext9, target = targ, text = 'SP Ability', Mana = 198, colorofmana = spcolor}
+		{hide=true, bloodpact= 'Bloodpact',name = 'Ability', number = macroassign..'`', numbertext = 'Keybind', target = me, text = 'Help Text', Mana = 'Mana Cost', finalmana = 'Mana Cost'},
+		{bloodpact= 'Rage',name = 'Thunder IV', number = macroassign1, numbertext = macrotext1, target = targ, Mana = 118, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Thunderspark', number = macroassign2, numbertext = macrotext2, target = targ, text='AoE Paralyze', Mana = 38, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Thunderstorm', number = macroassign3, numbertext = macrotext3, target = targ, text = merits['Thunderstorm'] > 0 and ((merits['Thunderstorm']-1)*400)..' TP Bonus' or 'Not Merited', colorofmana = meritbpcolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Volt Strike', number = macroassign4, numbertext = macrotext4, target = targ, Mana = 229, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Shock Squall', number = macroassign5, numbertext = macrotext5, target = targ, text='AoE Stun', Mana = 67, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Lightning Armor', number = macroassign6, numbertext = macrotext6, target = me, text= 'Shock Spikes', Mana = 91, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Rolling Thunder', number = macroassign7, numbertext = macrotext7, target = me, text='Enthunder', Mana = 52, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= '',name = '', number = macroassign8, numbertext = macrotext8, target = me, text = '', hide=true, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Judgment Bolt', number = macroassign9, numbertext = macrotext9, target = targ, text = 'SP Ability', Mana = 198, colorofmana = spcolor, finalmana = 198}
 
 }
 	macros['Diabolos'] = {
-		{hide=true,bloodpact= 'Bloodpact',name = 'Ability', number = macroassign..'`', numbertext = 'Keybind', target = me, text = 'Help Text', Mana = 'Mana Cost'},
-		{bloodpact= 'Rage',name = 'Night Terror', number = macroassign1, numbertext = macrotext1, target = targ, Mana = 177, colorofmana = manacolor},
-		{bloodpact= 'Rage',name = 'Blindside', number = macroassign2, numbertext = macrotext2, target = targ, Mana = 147, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Ultimate Terror', number = macroassign3, numbertext = macrotext3, target = targ, text='Reduced all Attributes', Mana = 27, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Somnolence', number = macroassign4, numbertext = macrotext4, target = targ, text= 'Gravity', Mana =  30, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Pavor Nocturnus', number = macroassign5, numbertext = macrotext5, target = targ, text='Death or Dispel', Mana = 246, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Nightmare', number = macroassign6, numbertext = macrotext6, target = targ, text= 'AoE Sleep and DoT', Mana = 42, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Dream Shroud', number = macroassign7, numbertext = macrotext7, target = me, text= function() return avatar_phases('Dream Shroud') end, Mana = 121, colorofmana = manacolor},
-		{bloodpact= 'Ward',name = 'Noctoshield', number = macroassign8, numbertext = macrotext8, target = me, text = '13 Damage Reduction', Mana = 92, colorofmana = manacolor},
-		{bloodpact= 'Rage',name = 'Ruinous Omen', number = macroassign9, numbertext = macrotext9, target = targ, text = 'SP Ability -- % Based damage', Mana = 198, colorofmana = spcolor}
+		{hide=true,bloodpact= 'Bloodpact',name = 'Ability', number = macroassign..'`', numbertext = 'Keybind', target = me, text = 'Help Text', Mana = 'Mana Cost', finalmana = 'Mana Cost'},
+		{bloodpact= 'Rage',name = 'Night Terror', number = macroassign1, numbertext = macrotext1, target = targ, Mana = 177, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Blindside', number = macroassign2, numbertext = macrotext2, target = targ, Mana = 147, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Ultimate Terror', number = macroassign3, numbertext = macrotext3, target = targ, text='Reduced all Attributes', Mana = 27, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Somnolence', number = macroassign4, numbertext = macrotext4, target = targ, text= 'Gravity', Mana =  30, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Pavor Nocturnus', number = macroassign5, numbertext = macrotext5, target = targ, text='Death or Dispel', Mana = 246, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Nightmare', number = macroassign6, numbertext = macrotext6, target = targ, text= 'AoE Sleep and DoT', Mana = 42, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Dream Shroud', number = macroassign7, numbertext = macrotext7, target = me, text= function() return avatar_phases('Dream Shroud') end, Mana = 121, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Ward',name = 'Noctoshield', number = macroassign8, numbertext = macrotext8, target = me, text = '13 Damage Reduction', Mana = 92, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Ruinous Omen', number = macroassign9, numbertext = macrotext9, target = targ, text = 'SP Ability -- % Based damage', Mana = 198, colorofmana = spcolor, finalmana = 198}
 
 }
-	current_macros = macros[pet and pet.name or 'None'] -- Sets macro binds to current pet on function load
+	current_macros = macros[petname()] -- Sets macro binds to current pet on function load
 	
 	------ The following tables are used to determine favor tiers. No customization really needed here unless you want to fill out unknown values for each tier -----
 	favortiers = {
@@ -580,10 +580,10 @@ function pet_change(pet,gain)
 			if not NoHud then 
 				macrohud._track._var = macros['None'] 
 			end
-		elseif macros[pet and pet.name or 'None'] then
+		elseif macros[petname()] then
 			build_keybinds(pet and macros[pet.name] and pet.name or 'None')
 			if not NoHud then 
-				macrohud._track._var = macros[pet and pet.name or 'None'] 
+				macrohud._track._var = macros[petname()] 
 			end 			
 		end
 	end
@@ -606,9 +606,9 @@ function pretarget(spell,action)
 -- Autoconvert logic
 	if player.sub_job == 'RDM' then -- Verifys you have the appropriate sub
 		local abil_recasts = windower.ffxi.get_ability_recasts() --Collect recast date
-		if atconvert.value and pet and macros[pet and pet.name or 'None'] and pet.isvalid and (buffactive['Astral Conduit'] or Convertall) and abil_recasts[49] == 0 then -- Verifies that Convert is up and all other conditions are met
+		if atconvert.value and pet and macros[petname()] and pet.isvalid and (buffactive['Astral Conduit'] or Convertall) and abil_recasts[49] == 0 then -- Verifies that Convert is up and all other conditions are met
 			spellrow = verifyAbility(macros[pet.name],spell.name) --Figures out where in the macro table this spell exists
-			if spellrow and macros[pet.name][spellrow].Mana > player.mp then --Converts if spell MP is great than Player mana
+			if (spellrow and macros[pet.name][spellrow].Mana > player.mp) or (buffactive['Apogee'] and Convertall and spellrow and macros[pet.name][spellrow].Mana*1.5 > player.mp) then --Converts if spell MP is great than Player mana
 				cancel_spell()
 				send_command('input /ja "Convert" <me>')
 			end
@@ -1292,7 +1292,7 @@ function build_UI()
         auto_height = true,
         pad_y = 0,
         var = current_macros,
-        columns = {'numbertext', 'bloodpact', 'name', 'Mana', 'text', 'colorofmana'},
+        columns = {'numbertext', 'bloodpact', 'name', 'finalmana', 'text', 'colorofmana'},
         auto_update = true
     }
 	--Determines if Draw needs to take place.
@@ -1549,7 +1549,7 @@ end
 --Function to determine if mana is less than mana needed. Updates the macrohud Colors
 function manacolor(cell)
     local manacost = macrohud[cell.row][cell.col - 2].value
-    if windower.ffxi.get_player().vitals.mp >= (manacost ~= '' and  manacost or 0) then
+    if windower.ffxi.get_player().vitals.mp >= (manacost ~= '' and  tonumber(manacost) or 0) then
 		macrohud:style_row(cell.row, {color = {255,253,252,250}})
         macrohud:style_row(cell.row, {stroke_color = {127, 18, 97, 136}})
     else
@@ -1558,6 +1558,16 @@ function manacolor(cell)
     end
     return ''
 end
+
+function manavalue(cell)
+	local manacost = macros[petname()][cell.row].Mana or false
+	if not manacost then return '' end
+	if buffactive['Apogee'] then
+	manacost = manacost*1.5
+	end
+	return math.ceil(manacost)
+end
+
 --Function to determine the favor value and tiers for the HUD
 function determinefavor()
 	local head = player.equipment.head	
@@ -1631,6 +1641,10 @@ function sub_job_change(new, old)
     windower.send_command('gs reload')
 end
 
+function petname()
+    local pet = windower.ffxi.get_mob_by_target('pet')
+    return pet and pet.name or 'None'
+end
 function update_gear() -- needs to be called with gearswap vars loaded
 
     if player.status == 'Engaged' and engagedMode.value ~= 'Off' then
