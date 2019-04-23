@@ -92,7 +92,7 @@ function setup()
 	Ypos= 150
 -----------------------------------------------------------------------------------------------------------------------------
 	siphondelay = 7 --Enter how long you want the siphon process to take here. I highly recommend 8 seconds. Lagmode will add an additional 2 seconds to this
-	BindMacros = true -- Change to false if you don't want to bind macros. Recommended if you want to use your own ingame macros
+	BindMacros = false -- Change to false if you don't want to bind macros. Recommended if you want to use your own ingame macros
 	NoHud = false -- Change to true if you want no hud display. 
 	Autofavor = true -- Change to false if you don't want the lua to automatically apply Avatar's Favor when applicable
 	AutoRemedy = true -- Auto Remedy when using an ability while Paralyzed. Checks Inventory
@@ -208,7 +208,7 @@ function define_macrosets()
 	send_command('bind '..ramuhBind..' gs c smn ramuh')
 	send_command('bind '..diabolosBind..' gs c smn diabolos')
 	send_command('bind '..caitsithBind..' gs c smn caitsith')
-	send_command('bind '..atomosBind..' input gs c atomos')
+	send_command('bind '..atomosBind..' gs c smn atomos')
 	send_command('bind '..alexanderBind..' input /ma "Alexander" <me>')
 	send_command('bind '..odinBind..' input /ma "Odin" <me>')
 	
@@ -284,7 +284,7 @@ function define_macrosets()
 		{hide=true, bloodpact= 'Summon',name = 'Cait Sith', number = caitsithBind, numbertext = caitsithText, target = me, Mana = 5, colorofmana = manacolor, finalmana = 15},
 		{hide=true, bloodpact= 'Summon',name = 'Atomos', number = atomosBind, numbertext = atomosText, target = targ, text = 'Dispel / Buff', Mana = 50, colorofmana = manacolor, finalmana = 50},
 		{hide=true, bloodpact= 'Summon',name = 'Alexander', number = alexanderBind, numbertext = alexanderText, target = me, text = 'Requires Astral Flow -- High DT and Status Immunity', Mana = 'All', colorofmana = spcolor, finalmana = 'All'},
-		{hide=true, bloodpact= 'Summon',name = 'Odin', number = odinBind, numbertext = odinText, target = me, text = ' Requires Astral Flow -- Chance to Instantly Kill ', Mana = 'All', colorofmana = spcolo, finalmana = 'All'},
+		{hide=true, bloodpact= 'Summon',name = 'Odin', number = odinBind, numbertext = odinText, target = me, text = ' Requires Astral Flow -- Chance to Instantly Kill ', Mana = 'All', colorofmana = spcolor, finalmana = 'All'},
 
 }
 	macros['Cait Sith'] = {
@@ -329,7 +329,7 @@ function define_macrosets()
 	macros['Ifrit'] = {
 		{hide=true, bloodpact= 'Bloodpact',name = 'Ability', number = macroassign1, numbertext = 'Keybind', target = me, text = 'Help Text', Mana = 'Mana Cost', finalmana = 'Mana Cost'},
 		{bloodpact= 'Rage',name = 'Fire IV', number = macroassign1, numbertext = macrotext1, target = targ, Mana = 118, colorofmana = manacolor, finalmana = manavalue},
-		{bloodpact= 'Rage',name = 'Conflag Strike', number = macroassign2, numbertext = macrotext2, target = targ, text=' Int -63', Mana = 141, colorofmana = manacolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Conflag Strike', number = macroassign2, numbertext = macrotext2, target = targ, text='Int -63', Mana = 141, colorofmana = manacolor, finalmana = manavalue},
 		{bloodpact= 'Rage',name = 'Meteor Strike', number = macroassign3, numbertext = macrotext3, target = targ,text = merits['Meteor Strike'] > 0 and ((merits['Meteor Strike']-1)*400)..' TP Bonus' or 'Not Merited', Mana = 182, colorofmana = meritbpcolor, finalmana = manavalue},
 		{bloodpact= 'Rage',name = 'Flaming Crush', number = macroassign4, numbertext = macrotext4, target = targ, Mana = 164, colorofmana = manacolor, finalmana = manavalue},
 		{bloodpact= 'Ward',name = 'Crimson Howl', number = macroassign5, numbertext = macrotext5, target = me, text='11% Attack Boost', Mana = 84, colorofmana = manacolor, finalmana = manavalue},
@@ -1359,6 +1359,7 @@ end
 
 -- Function that will release current pet, summon atomos and resummon old pet after
 function atomosrun()
+
 	if windower.ffxi.get_spell_recasts()[847] > 0 then
 		send_command('input /echo Atomos is not ready yet')
 		return
@@ -1605,7 +1606,7 @@ function determinemerits()
         ['Grand Fall'] = meritvalues['grand_fall']
 	}
 	
-	define_macrosets()
+	if BindMacros then define_macrosets() end
 	
 end
 -- Grabs PetTP` from a packet. 
