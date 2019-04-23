@@ -37,11 +37,7 @@
 -- If something doesn't work for you please contact me on Discord at Lavi#8710
 -- Credits go to - Pergatory (Their base LUA was used here), Verda (Used a lot of elements from their Gearswap)
 -- Jyouya - Who made the GUI library as well as helped scripted out some of the more difficult stuff.
---[[
-To do list:)
-One last test of everything
-Stress test lua with other users
-]]
+-- Poochlove - My wife who made some of the icons!
 
 
 
@@ -126,7 +122,7 @@ function setup()
 	Physical_BPs_TP = S{'Rock Buster','Mountain Buster','Crescent Fang','Spinning Dive'}
 	AvatarList = S{'Shiva','Ramuh','Garuda','Leviathan','Diabolos','Titan','Fenrir','Ifrit','Carbuncle','Fire Spirit','Air Spirit','Ice Spirit','Thunder Spirit','Light Spirit','Dark Spirit','Earth Spirit','Water Spirit','Cait Sith','Alexander','Odin','Atomos'}
 	Spabilities = S{'Odin', 'Alexander', 'Searing Light', 'Ruinous Omen', 'Howling Moon', 'Aerial Blast', 'Inferno', 'Tidal Wave', 'Judgment Bolt', 'Diamond Dust', 'Earthen Fury' }
-
+	NonValidFavor = S{'Odin', 'Alexander', 'Atomos'}
 ------------------------------------------------------------
 --Initializing values used to help determine favor variables. Manually define these in your GEAR lua, not here as it won't do anything--
 	jobpointbonus = false
@@ -395,7 +391,7 @@ function define_macrosets()
 		{hide=true, bloodpact= 'Bloodpact',name = 'Ability', number = macroassign..'`', numbertext = 'Keybind', target = me, text = 'Help Text', Mana = 'Mana Cost', finalmana = 'Mana Cost'},
 		{bloodpact= 'Rage',name = 'Thunder IV', number = macroassign1, numbertext = macrotext1, target = targ, Mana = 118, colorofmana = manacolor, finalmana = manavalue},
 		{bloodpact= 'Rage',name = 'Thunderspark', number = macroassign2, numbertext = macrotext2, target = targ, text='AoE Paralyze', Mana = 38, colorofmana = manacolor, finalmana = manavalue},
-		{bloodpact= 'Rage',name = 'Thunderstorm', number = macroassign3, numbertext = macrotext3, target = targ, text = merits['Thunderstorm'] > 0 and ((merits['Thunderstorm']-1)*400)..' TP Bonus' or 'Not Merited', colorofmana = meritbpcolor, finalmana = manavalue},
+		{bloodpact= 'Rage',name = 'Thunderstorm', number = macroassign3, numbertext = macrotext3, target = targ, Mana = 182, text = merits['Thunderstorm'] > 0 and ((merits['Thunderstorm']-1)*400)..' TP Bonus' or 'Not Merited', colorofmana = meritbpcolor, finalmana = manavalue},
 		{bloodpact= 'Rage',name = 'Volt Strike', number = macroassign4, numbertext = macrotext4, target = targ, Mana = 229, colorofmana = manacolor, finalmana = manavalue},
 		{bloodpact= 'Ward',name = 'Shock Squall', number = macroassign5, numbertext = macrotext5, target = targ, text='AoE Stun', Mana = 67, colorofmana = manacolor, finalmana = manavalue},
 		{bloodpact= 'Ward',name = 'Lightning Armor', number = macroassign6, numbertext = macrotext6, target = me, text= 'Shock Spikes', Mana = 91, colorofmana = manacolor, finalmana = manavalue},
@@ -693,6 +689,9 @@ function aftercast(spell)
 	if not string.find(spell.type,"BloodPact") then
         update_gear()
     end
+	if spell.interrupted and summons:contains(spell.name:lower()) then
+		pet_update()
+	end
 	
 	
 end
@@ -708,7 +707,7 @@ function buff_change(name,gain)
 		elseif name=='Avatar\'s Favor' then
 			local abil_recasts = windower.ffxi.get_ability_recasts() --Collect recast date
 			Favor= "Off"
-			if pet.isvalid and Autofavor and abil_recasts[176] == 0 then
+			if pet.isvalid and Autofavor and abil_recasts[176] == 0 and not NonValidFavor[pet.name] then
 			send_command('input /ja "Avatar\'s Favor" <me>')
 		end
 	end
@@ -1074,7 +1073,7 @@ function pet_update()
 	
 	if pet.isvalid and not buffactive['Avatar\'s Favor'] and Autofavor then
 		local abil_recasts = windower.ffxi.get_ability_recasts() --Collect recast date
-		if abil_recasts[176] == 0 then
+		if abil_recasts[176] == 0 and not NonValidFavor[pet.name] then
 			send_command('wait 2; input /ja "Avatar\'s Favor" <me>')
 		end
 	end
@@ -1169,7 +1168,7 @@ function build_UI()
         align = 'center'},
     function()
 		local Displaytext =''
-		if Favor == 'On' or not (pet and pet.isvalid) then 
+		if Favor == 'On' or not (pet and pet.isvalid) or NonValidFavor[petname()] then 
 			if pet and pet.isvalid and favorvalues[pet.name] then
 				local favorvalue = determinefavor()
 				if favorvalue > 11 then favorvalue = 11 end
@@ -1359,8 +1358,14 @@ end
 
 -- Function that will release current pet, summon atomos and resummon old pet after
 function atomosrun()
-
+	local t = windower.ffxi.get_mob_by_target('t')
+	if not (t and bit.band(t.id,0xFF000000) ~= 0) and t.index > 0x400 then
+		send_command('input /echo This is not a valid target for Atomos')
+		pet_update()
+		return
+	end
 	if windower.ffxi.get_spell_recasts()[847] > 0 then
+		pet_update()
 		send_command('input /echo Atomos is not ready yet')
 		return
 	end
@@ -1368,9 +1373,9 @@ function atomosrun()
 		lagmodechange = 0
 		if LagMode.value then lagmodechange = 1 end
 		local previouspet = pet.name
-		send_command('input /ja "Release" <me>;wait '..1.5+lagmodechange..';input /ma "Atomos" <t>;wait '..22+lagmodechange..';input /ma "'..previouspet..'" <me>')
+		send_command('input /ja "Release" <me>;wait '..1.5+lagmodechange..';input /ma "Atomos" '..t.id..';wait '..22+lagmodechange..';input /ma "'..previouspet..'" <me>')
 	else
-		send_command('input /ma "Atomos" <t>')
+		send_command('input /ma "Atomos" '..t.id)
 	end
 
 
@@ -1381,16 +1386,29 @@ function spavatar(summonname)
 
 	if not buffactive['Astral Flow'] then
 		send_command('input /echo You need Astral Flow to use '..summonname:ucfirst())
+		pet_update()
 		return
 	end
 	targetvalue = '<me>'
-	if summonname == 'odin' then targetvalue = '<t>' end
+	if summonname == 'odin' then 
+		local t = windower.ffxi.get_mob_by_target('t')
+		targetvalue = '<t>' 
+		if not (t and bit.band(t.id,0xFF000000) ~= 0) and t.index > 0x400 then
+			send_command('input /echo This is not a valid target for Odin')
+			pet_update()
+			return
+		else
+			targetvalue = t.id
+		end
+	end
 	if pet and pet.isvalid then
 		lagmodechange = 0
 	if LagMode.value then lagmodechange = 1 end
+		pet_update()
 		local previouspet = pet.name
-		send_command('input /ja "Release" <me>;wait '..1.5+lagmodechange..';input /ma "'..summonname..'" '.. targetvalue..';wait '..22+lagmodechange..';input /ma "'..previouspet..'" <me>')
+		send_command('input /ja "Release" <me>;wait '..1.5+lagmodechange..';input /ma "'..summonname..'" '.. targetvalue..';wait '..18+lagmodechange..';input /ma "'..previouspet..'" <me>')
 	else
+		pet_update()
 		send_command('input /ma "'..summonname..' '..targetvalue)
 	end
 	

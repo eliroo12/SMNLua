@@ -29,7 +29,7 @@ calculate gear properly when using them (It will most likely default to your Ent
 - If you have any major problems or suggestions on how to make this lua better feel free to contact me at Lavi#8710 on discord -- Also did you **READ THE COMMENTS**?
 
 Finally this lua wouldn't be possible without the hardwork and effort that Jyouya put into fine tuning the GUI library as well as greatly helping me sort out how to work some functions
-Also thanks to Pergatory for providing their base lua as a solid starting point and Verda for inspiring me with their lua as well as showing me (through their gearswap) how do some informational functions
+Also thanks to Pergatory for providing their base lua as a solid starting point, Verda for inspiring me with their lua as well as showing me (through their gearswap) how do some informational functions and my wife for editting some nice buttons to click!
 
 
 Things this gearswap does:
