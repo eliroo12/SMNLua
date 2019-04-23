@@ -37,7 +37,11 @@
 -- If something doesn't work for you please contact me on Discord at Lavi#8710
 -- Credits go to - Pergatory (Their base LUA was used here), Verda (Used a lot of elements from their Gearswap)
 -- Jyouya - Who made the GUI library as well as helped scripted out some of the more difficult stuff.
--- Poochlove - My wife who made some of the icons!
+--[[
+To do list:)
+One last test of everything
+Stress test lua with other users
+]]
 
 
 
@@ -725,9 +729,6 @@ function pet_aftercast(spell)
 		if not buffactive["Astral Conduit"] then
 			update_gear()
 		end
-		if atconvert.value and buffactive["Astral Conduit"] and player.mp < 229  then
-			send_command('input /ja "Convert" <me>')
-	end
 end
 
 --Handles BP equip swap
