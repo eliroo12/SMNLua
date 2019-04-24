@@ -71,7 +71,7 @@ function file_unload()
 	send_command('unbind '..releasemacro)
 	send_command('unbind '..retreatmacro)
 	send_command('unbind '..assaultmacro)
-	send_command('ubbind !numpad/')
+	send_command('unbind !numpad/')
 	unbind_keybinds('Carbuncle') -- Just pick carbuncle manually because that table has 1-9 listed as available macros
 	
 end
@@ -92,12 +92,12 @@ function setup()
 	Ypos= 150
 -----------------------------------------------------------------------------------------------------------------------------
 	siphondelay = 7 --Enter how long you want the siphon process to take here. I highly recommend 8 seconds. Lagmode will add an additional 2 seconds to this
-	BindMacros = true -- Change to false if you don't want to bind macros. Recommended if you want to use your own ingame macros
+	BindMacros = true -- Change to false if you don't want to bind macros.` Recommended if you want to use your own ingame macros
 	NoHud = false -- Change to true if you want no hud display. 
 	Autofavor = true -- Change to false if you don't want the lua to automatically apply Avatar's Favor when applicable
 	AutoRemedy = true -- Auto Remedy when using an ability while Paralyzed. Checks Inventory
 	AutoEcho = true-- Auto Echo Drop when using an ability while Silenced. Checks Inventory
-	Convertall = true -- If this is set to true the Autoconvert function will work on any bloodpact regardless if you are under Astral Conduit or not
+	Convertall = false -- If this is set to true the Autoconvert function will work on any bloodpact regardless if you are under Astral Conduit or not
 	AccMode = false 
 	MeleeMode = false --Determines if you are locked into Nirvana or not.
     set_macro_page(10, 10)
@@ -1094,7 +1094,8 @@ function build_UI()
 		drawconvert = true
 		buttonX = 0
 	end
-
+	GUI.bound.y.lower = Ypos -- override the default y bound for where GUI-lib will open boxes
+    GUI.bound.y.upper = Ypos+540
 -- Setting Paramets for the UI when BindMacros is Off to offer a cleaner look with less dead space	
 	unboundY = 0
 	unboundX = 0
