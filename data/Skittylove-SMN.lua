@@ -101,6 +101,10 @@ function setup()
 	AccMode = false 
 	MeleeMode = false --Determines if you are locked into Nirvana or not.
     set_macro_page(10, 10)
+	Lightthemecolor = {}
+	Lightthemestroke = {}
+	Darkthemecolor = {}
+	Darkthemestroke = {}
 -----------------------------------------------------------------------------------------------------------
 --------------------------------End User Entry Section-----------------------------------------------------
 -----------------------------------------------------------------------------------------------------------
@@ -754,10 +758,8 @@ function equipBPGear(spell)
     elseif Merit_BPs:contains(spell) then
         equipSet = equipSet.Magic_BP
         if merits[spell] and (merits[spell]-1)*400 + pet_tp > 1500 then
-			print((merits[spell]-1)*400 + pet_tp)
             equipSet = equipSet.NoTP -- sets.pet_midcast.Magic_BP.NoTP
         else
-			print((merits[spell]-1)*400 + pet_tp)
             equipSet = equipSet.TP
         end
     elseif Debuff_Rage_BPs:contains(spell) then
