@@ -71,7 +71,7 @@ function file_unload()
 	send_command('unbind '..releasemacro)
 	send_command('unbind '..retreatmacro)
 	send_command('unbind '..assaultmacro)
-	send_command('!unbind numpad/')
+	send_command('ubbind !numpad/')
 	unbind_keybinds('Carbuncle') -- Just pick carbuncle manually because that table has 1-9 listed as available macros
 	
 end
@@ -164,11 +164,11 @@ function define_macrosets()
 	releasemacro='numpad-'
 	retreattext='Ctrl Numpad+'
 	retreatmacro='^numpad+'
-
+	if BindMacros then
 	send_command('bind '..releasemacro..' gs c smn blank')
 	send_command('bind '..retreatmacro..' input /pet "Retreat" <me>')
 	send_command('bind '..assaultmacro..' input /pet "Assault" <t>')
-
+	end
 -- If you want different binds for the avatars fill out them here.
 -- Bind should be the actual text of key bind. Text should be what you want displayed in the HUD
 ---------------------------------------------------------------------------	
@@ -199,7 +199,7 @@ function define_macrosets()
 	odinBind = '!='
 	odinText = 'Alt ='
 ---------------------------------------------------------------------------	
-
+	if BindMacros then
 	send_command('bind f9 gs c ToggleIdle')
 	send_command('bind f10 gs c MeleeMode true')
 	send_command('bind '..carbuncleBind..' gs c smn carbuncle')
@@ -218,7 +218,7 @@ function define_macrosets()
 	
 	--Special Binds for myself to run the siphon command without clicking the button. Can change manually
 	send_command('bind !numpad/ gs c siphon')
-	
+	end
 	-- Just making a table for building a UI
 	base_macros = {
 	{text = releasetext, name = 'Release'},
@@ -1627,7 +1627,7 @@ function determinemerits()
         ['Grand Fall'] = meritvalues['grand_fall']
 	}
 	
-	if BindMacros then define_macrosets() end
+	define_macrosets()
 	
 end
 -- Grabs PetTP` from a packet. 
